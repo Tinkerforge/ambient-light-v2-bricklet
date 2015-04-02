@@ -37,7 +37,12 @@
 #define BRICKLET_HARDWARE_VERSION_MINOR 0
 #define BRICKLET_HARDWARE_VERSION_REVISION 0
 
-#define BRICKLET_DEVICE_IDENTIFIER 21
+#define BRICKLET_DEVICE_IDENTIFIER 259
+
+#define BOARD_MCK 64000000
+
+#define PIN_SCL (BS->pin2_da)
+#define PIN_SDA (BS->pin3_pwm)
 
 #define MAX_ADC_VALUE ((1  << 12) - 1)
 #define MAX_VOLTAGE 3300
@@ -45,6 +50,7 @@
 #define LOGGING_LEVEL LOGGING_DEBUG
 #define DEBUG_BRICKLET 0
 
+#define BRICKLET_VALUE_APPLIED_OUTSIDE
 #define BRICKLET_HAS_SIMPLE_SENSOR
 #define BRICKLET_NO_OFFSET
 #define INVOCATION_IN_BRICKLET_CODE
@@ -69,6 +75,10 @@ typedef struct {
 	char     threshold_option_save[NUM_SIMPLE_VALUES];
 
 	uint32_t tick;
+
+	uint8_t integration_time;
+	uint8_t illuminance_range;
+	uint8_t data_counter;
 } BrickContext;
 
 #endif
