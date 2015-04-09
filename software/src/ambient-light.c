@@ -28,6 +28,9 @@
 #include "brickletlib/bricklet_simple.h"
 #include "config.h"
 
+#define CH0 1
+#define CH1 0
+
 #define I2C_HALF_CLOCK_400KHZ 1250  // 2.5us per clock
 
 #define SIMPLE_UNIT_ILLUMINANCE 0
@@ -109,16 +112,53 @@ void tick(const uint8_t tick_type) {
 				// Read both channels
 				uint16_t data[2];
 				ltr_329_read_registers(REG_ALS_DATA_CH1, (uint8_t *)&data, 4);
+				update_values(data);
 				BA->printf("ch1: %d, ch0: %d\n\r", data[0], data[1]);
 			}
 		}
 	}
 
-	if(tick_type & TICK_TASK_TYPE_MESSAGE) {
+	simple_tick(tick_type);
+}
 
+void update_values(const uint16_t values[2]) {
+	// See Appendix A for Lux calculation from channel 0 and 1 measurements
+
+	uint32_t lux = 0;
+	uint32_t ratio = (values[CH1]*1000)/(values[CH0]+values[CH1]);
+	if(ratio < 450) {
+		lux = (values[CH0]*17743 + values[CH1]*11059);
+	} else if(ratio < 640 && ratio >= 450) {
+		lux = (values[CH0]*42785 - values[CH1]*19548);
+	} else if(ratio < 850 && ratio >= 640) {
+		lux = (values[CH0]*5926 + 1185*values[CH1]);
 	}
 
-	simple_tick(tick_type);
+	uint32_t divider = 1;
+	uint32_t multiplier = 1;
+
+	switch(BC->illuminance_range) {
+		case 0: divider = 1;                  break;
+		case 1: divider = 2;                  break;
+		case 2: divider = 4;                  break;
+		case 3: divider = 8;                  break;
+		case 4: divider = 48;                 break;
+		case 5: divider = 96;                 break;
+	}
+
+	switch(BC->integration_time) {
+		case 0:               multiplier = 2; break;
+		case 1:                               break;
+		case 2: divider *= 3; multiplier = 2; break;
+		case 3: divider *= 2;                 break;
+		case 4: divider *= 5; multiplier = 2; break;
+		case 5: divider *= 3;                 break;
+		case 6: divider *= 7; multiplier = 2; break;
+		case 7: divider *= 4;                 break;
+	}
+
+	BC->last_value[0] = BC->value[0];
+	BC->value[0] = lux/(divider*10000/multiplier);  // Calculate lux
 }
 
 void set_configuration(const ComType com, const SetConfiguration *data) {

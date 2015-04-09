@@ -98,6 +98,7 @@ void constructor(void);
 void destructor(void);
 void tick(const uint8_t tick_type);
 
+void update_values(const uint16_t *values);
 void update_configuration(void);
 
 void ltr_329_read_registers(const uint8_t reg, uint8_t *data, const uint8_t length);
