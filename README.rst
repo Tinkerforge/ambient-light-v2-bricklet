@@ -1,4 +1,4 @@
-Ambient Light 2.0 Bricklet
+Ambient Light Bricklet 2.0
 ==========================
 
 **This Bricklet is currently Work In Progress.**
