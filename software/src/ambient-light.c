@@ -88,6 +88,7 @@ void constructor(void) {
 	BC->data_counter = 0;
 	BC->integration_time = INTEGRATION_TIME_200MS;
 	BC->illuminance_range = RANGE_8000LUX;
+	BC->throw_next_data_away = false;
 	// Sleep 100ms before and 10ms after initial init (see p22)
 	SLEEP_MS(100);
 	update_configuration();
@@ -108,12 +109,15 @@ void tick(const uint8_t tick_type) {
 			ltr_329_read_registers(REG_ALS_STATUS, &status, 1);
 
 			// Check if new data is available and valid
-			if((status & (1 << 2)) && (status & (1 << 7))) {
+			if((status & (1 << 2)) /*&& (!(status & (1 << 7)))*/) {
 				// Read both channels
 				uint16_t data[2];
 				ltr_329_read_registers(REG_ALS_DATA_CH1, (uint8_t *)&data, 4);
-				update_values(data);
-				BA->printf("ch1: %d, ch0: %d\n\r", data[0], data[1]);
+				if(BC->throw_next_data_away) {
+					BC->throw_next_data_away = false;
+				} else {
+					update_values(data, status);
+				}
 			}
 		}
 	}
@@ -121,7 +125,7 @@ void tick(const uint8_t tick_type) {
 	simple_tick(tick_type);
 }
 
-void update_values(const uint16_t values[2]) {
+void update_values(const uint16_t values[2], const uint8_t status) {
 	// See Appendix A for Lux calculation from channel 0 and 1 measurements
 
 	uint32_t lux = 0;
@@ -131,19 +135,19 @@ void update_values(const uint16_t values[2]) {
 	} else if(ratio < 640 && ratio >= 450) {
 		lux = (values[CH0]*42785 - values[CH1]*19548);
 	} else if(ratio < 850 && ratio >= 640) {
-		lux = (values[CH0]*5926 + 1185*values[CH1]);
+		lux = (values[CH0]*5926 + values[CH1]*1185);
 	}
 
 	uint32_t divider = 1;
 	uint32_t multiplier = 1;
 
-	switch(BC->illuminance_range) {
-		case 0: divider = 1;                  break;
-		case 1: divider = 2;                  break;
-		case 2: divider = 4;                  break;
-		case 3: divider = 8;                  break;
-		case 4: divider = 48;                 break;
-		case 5: divider = 96;                 break;
+	switch((status >> 4) & 0x7) {
+		case RANGE_64000LUX: divider = 1;     break;
+		case RANGE_32000LUX: divider = 2;     break;
+		case RANGE_16000LUX: divider = 4;     break;
+		case RANGE_8000LUX:  divider = 8;     break;
+		case RANGE_1300LUX:  divider = 48;    break;
+		case RANGE_600LUX:   divider = 96;    break;
 	}
 
 	switch(BC->integration_time) {
@@ -158,7 +162,19 @@ void update_values(const uint16_t values[2]) {
 	}
 
 	BC->last_value[0] = BC->value[0];
-	BC->value[0] = lux/(divider*10000/multiplier);  // Calculate lux
+	BC->value[0] = lux/(divider*100/multiplier);  // Calculate lux
+
+	// Cap lux measurement for each range to defined maximum if data invalid bit is set
+	if(status & (1 << 7)) {
+		switch(BC->illuminance_range) {
+			case 5: BC->value[0] = MIN(BC->value[0],   60000); break;
+			case 4: BC->value[0] = MIN(BC->value[0],  130000); break;
+			case 3: BC->value[0] = MIN(BC->value[0],  800000); break;
+			case 2: BC->value[0] = MIN(BC->value[0], 1600000); break;
+			case 1: BC->value[0] = MIN(BC->value[0], 3200000); break;
+			case 0: BC->value[0] = MIN(BC->value[0], 6400000); break;
+		}
+	}
 }
 
 void set_configuration(const ComType com, const SetConfiguration *data) {
@@ -170,6 +186,7 @@ void set_configuration(const ComType com, const SetConfiguration *data) {
 	BC->integration_time = data->integration_time;
 	BC->illuminance_range = data->illuminance_range;
 	update_configuration();
+	BC->throw_next_data_away = true;
 }
 
 void get_configuration(const ComType com, const GetConfiguration *data) {

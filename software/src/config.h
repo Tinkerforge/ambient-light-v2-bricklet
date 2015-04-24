@@ -41,8 +41,8 @@
 
 #define BOARD_MCK 64000000
 
+#define PIN_SDA (BS->pin1_ad)
 #define PIN_SCL (BS->pin2_da)
-#define PIN_SDA (BS->pin3_pwm)
 
 #define MAX_ADC_VALUE ((1  << 12) - 1)
 #define MAX_VOLTAGE 3300
@@ -79,6 +79,7 @@ typedef struct {
 	uint8_t integration_time;
 	uint8_t illuminance_range;
 	uint8_t data_counter;
+	bool throw_next_data_away;
 } BrickContext;
 
 #endif
