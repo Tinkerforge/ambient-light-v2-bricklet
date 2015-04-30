@@ -187,6 +187,8 @@ void set_configuration(const ComType com, const SetConfiguration *data) {
 	BC->illuminance_range = data->illuminance_range;
 	update_configuration();
 	BC->throw_next_data_away = true;
+
+	BA->com_return_setter(com, data);
 }
 
 void get_configuration(const ComType com, const GetConfiguration *data) {
