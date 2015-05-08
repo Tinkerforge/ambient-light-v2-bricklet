@@ -161,7 +161,6 @@ void update_values(const uint16_t values[2], const uint8_t status) {
 		case 7: divider *= 4;                 break;
 	}
 
-	BC->last_value[0] = BC->value[0];
 	BC->value[0] = lux/(divider*100/multiplier);  // Calculate lux
 
 	// Cap lux measurement for each range to defined maximum if data invalid bit is set
