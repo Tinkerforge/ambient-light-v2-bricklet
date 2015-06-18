@@ -1,12 +1,19 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[         0,          0]
-NotebookDataLength[      6160,        149]
-NotebookOptionsPosition[      5728,        128]
-NotebookOutlinePosition[      6066,        143]
-CellTagsIndexPosition[      6023,        140]
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6204,        149]
+NotebookOptionsPosition[      5935,        135]
+NotebookOutlinePosition[      6267,        150]
+CellTagsIndexPosition[      6224,        147]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -53,13 +60,13 @@ Cell[BoxData[{
    "Set", " ", "Period", " ", "for", " ", "illuminance", " ", "callback", " ",
      "to", " ", "1", "s", " ", 
     RowBox[{"(", 
-     RowBox[{"1000", "ms"}], ")"}]}], " ", "*)"}], "\n", 
+     RowBox[{"1000", "ms"}], ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"Note", ":", " ", 
     RowBox[{
     "The", " ", "illuminance", " ", "callback", " ", "is", " ", "only", " ", 
      "called", " ", "every", " ", "second", " ", "if", " ", "the"}]}], " ", 
-   "*)"}], "\[IndentingNewLine]", 
+   "*)"}], "\n", 
   RowBox[{"(*", "       ", 
    RowBox[{
    "illuminance", " ", "has", " ", "changed", " ", "since", " ", "the", " ", 
@@ -67,16 +74,15 @@ Cell[BoxData[{
     RowBox[{"call", "!"}]}], " ", "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"al", "@", 
-   RowBox[{"SetIlluminanceCallbackPeriod", "[", "1000", "]"}]}], "\n", 
-  "\[IndentingNewLine]", 
+   RowBox[{"SetIlluminanceCallbackPeriod", "[", "1000", "]"}]}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{
    "Callback", " ", "function", " ", "for", " ", "illuminance", " ", 
     "callback", " ", 
     RowBox[{"(", 
      RowBox[{"parameter", " ", "has", " ", "unit", " ", 
-      RowBox[{"Lux", "/", "100"}]}], ")"}]}], " ", 
-   "*)"}]}], "\[IndentingNewLine]", 
+      RowBox[{"Lux", "/", "100"}]}], ")"}]}], " ", "*)"}]}], "\n", 
  RowBox[{
   RowBox[{"IlluminanceCB", "[", 
    RowBox[{"sender_", ",", "illuminance_"}], "]"}], ":=", 
@@ -86,8 +92,8 @@ Cell[BoxData[{
     RowBox[{"ToString", "[", 
      RowBox[{"N", "[", 
       RowBox[{"Quantity", "[", 
-       RowBox[{"illuminance", ",", "\"\<Lux/100\>\""}], "]"}], "]"}], "]"}]}], 
-   "]"}]}], "\[IndentingNewLine]", 
+       RowBox[{"illuminance", ",", "\"\<Lux/100\>\""}], "]"}], "]"}], "]"}]}],
+    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"AddEventHandler", "[", 
    RowBox[{
@@ -124,11 +130,12 @@ Cell[BoxData[{
    3.6006085096134768`*^9}, {3.600608564485358*^9, 3.6006085694976482`*^9}, {
    3.6006086083315887`*^9, 3.600608696478737*^9}, {3.600608732817322*^9, 
    3.600608760452553*^9}, {3.600608824736239*^9, 3.600608825481593*^9}, 
-   3.60060918655473*^9, {3.600609227515625*^9, 3.600609227953993*^9}}]
+   3.60060918655473*^9, {3.600609227515625*^9, 3.600609227953993*^9}, 
+   3.643606352712164*^9, 3.6436063877183123`*^9}]
 },
 WindowSize->{1521, 867},
-WindowMargins->{{334, Automatic}, {54, Automatic}},
-FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+WindowMargins->{{334, 65}, {54, Automatic}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -142,9 +149,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[400, 13, 652, 12, 55, "Input"],
-Cell[1055, 27, 4669, 99, 561, "Input"]
+Cell[557, 20, 652, 12, 55, "Input"],
+Cell[1212, 34, 4719, 99, 561, "Input"]
 }
 ]
 *)
+
+(* End of internal cache information *)
 

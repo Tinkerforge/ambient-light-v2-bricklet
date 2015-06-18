@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback function for illuminance callback (parameter has unit Lux/10)
+// Callback function for illuminance callback (parameter has unit Lux/100)
 void cb_illuminance(uint32_t illuminance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
@@ -37,9 +37,9 @@ int main() {
 
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_v2_register_callback(&al,
-	                                  AMBIENT_LIGHT_V2_CALLBACK_ILLUMINANCE,
-	                                  (void *)cb_illuminance,
-	                                  NULL);
+	                                   AMBIENT_LIGHT_V2_CALLBACK_ILLUMINANCE,
+	                                   (void *)cb_illuminance,
+	                                   NULL);
 
 	printf("Press key to exit\n");
 	getchar();

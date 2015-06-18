@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     al: TBrickletAmbientLightV2;
   public
-    procedure IlluminanceCB(sender: TBrickletAmbientLightV2; const illuminance: LongWord);
+    procedure IlluminanceCB(sender: TBrickletAmbientLightV2; const illuminance: longword);
     procedure Execute;
   end;
 
@@ -25,7 +25,7 @@ var
   e: TExample;
 
 { Callback function for illuminance callback (parameter has unit Lux/100) }
-procedure TExample.IlluminanceCB(sender: TBrickletAmbientLightV2; const illuminance: LongWord);
+procedure TExample.IlluminanceCB(sender: TBrickletAmbientLightV2; const illuminance: longword);
 begin
   WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
 end;

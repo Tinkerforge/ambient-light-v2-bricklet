@@ -22,7 +22,7 @@ int main() {
 
 	// Create device object
 	AmbientLightV2 al;
-	ambient_light_v2_create(&al, UID, &ipcon); 
+	ambient_light_v2_create(&al, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -36,11 +36,11 @@ int main() {
 
 	// Register threshold reached callback to function cb_reached
 	ambient_light_v2_register_callback(&al,
-	                                AMBIENT_LIGHT_V2_CALLBACK_ILLUMINANCE_REACHED,
-	                                (void *)cb_reached,
-	                                NULL);
+	                                   AMBIENT_LIGHT_V2_CALLBACK_ILLUMINANCE_REACHED,
+	                                   (void *)cb_reached,
+	                                   NULL);
 
-	// Configure threshold for "greater than 200 Lux" (unit is Lux/010)
+	// Configure threshold for "greater than 200 Lux" (unit is Lux/100)
 	ambient_light_v2_set_illuminance_callback_threshold(&al, '>', 200*100, 0);
 
 	printf("Press key to exit\n");

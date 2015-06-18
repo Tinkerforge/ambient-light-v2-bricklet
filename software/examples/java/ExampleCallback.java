@@ -16,7 +16,7 @@ public class ExampleCallback {
 		// Don't use device before ipcon is connected
 
 		// Set Period for illuminance callback to 1s (1000ms)
-		// Note: The illuminance callback is only called every second if the 
+		// Note: The illuminance callback is only called every second if the
 		//       illuminance has changed since the last call!
 		al.setIlluminanceCallbackPeriod(1000);
 

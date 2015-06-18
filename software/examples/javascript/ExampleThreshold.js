@@ -27,7 +27,7 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
 al.on(Tinkerforge.BrickletAmbientLightV2.CALLBACK_ILLUMINANCE_REACHED,
     // Callback for illuminance greater than 200 Lux
     function(illuminance) {
-        console.log('We have ' +illuminance/100 + ' Lux.');
+        console.log('We have ' + illuminance/100 + ' Lux.');
         console.log('Too bright, close the curtains!');
     }
 );

@@ -14,7 +14,7 @@ int main() {
 
 	// Create device object
 	AmbientLightV2 al;
-	ambient_light_v2_create(&al, UID, &ipcon); 
+	ambient_light_v2_create(&al, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -23,7 +23,7 @@ int main() {
 	}
 	// Don't use device before ipcon is connected
 
-	// Get current illuminance (unit is Lux/10)
+	// Get current illuminance (unit is Lux/100)
 	uint32_t illuminance;
 	if(ambient_light_v2_get_illuminance(&al, &illuminance) < 0) {
 		fprintf(stderr, "Could not get value, probably timeout\n");

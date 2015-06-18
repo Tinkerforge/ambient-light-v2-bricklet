@@ -24,7 +24,7 @@ var
   e: TExample;
 
 procedure TExample.Execute;
-var illuminance: LongWord;
+var illuminance: longword;
 begin
   { Create IP connection }
   ipcon := TIPConnection.Create;

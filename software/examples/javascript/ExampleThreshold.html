@@ -51,7 +51,7 @@
                 al.on(Tinkerforge.BrickletAmbientLightV2.CALLBACK_ILLUMINANCE_REACHED,
                     // Callback for illuminance greater than 200 Lux
                     function(illuminance) {
-                        textArea.value += 'We have ' +illuminance/100 + ' Lux.\n';
+                        textArea.value += 'We have ' + illuminance/100 + ' Lux.\n';
                         textArea.value += 'Too bright, close the curtains!';
                         textArea.value += '\n';
                         textArea.scrollTop = textArea.scrollHeight;

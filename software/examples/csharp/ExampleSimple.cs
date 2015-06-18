@@ -6,7 +6,7 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change to your UID
 
-	static void Main() 
+	static void Main()
 	{
 		IPConnection ipcon = new IPConnection(); // Create IP connection
 		BrickletAmbientLightV2 al = new BrickletAmbientLightV2(UID, ipcon); // Create device object

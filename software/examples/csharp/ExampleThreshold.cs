@@ -13,7 +13,7 @@ class Example
 		System.Console.WriteLine("Too bright, close the curtains!");
 	}
 
-	static void Main() 
+	static void Main()
 	{
 		IPConnection ipcon = new IPConnection(); // Create IP connection
 		BrickletAmbientLightV2 al = new BrickletAmbientLightV2(UID, ipcon); // Create device object

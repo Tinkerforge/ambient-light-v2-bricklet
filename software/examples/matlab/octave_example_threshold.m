@@ -1,6 +1,6 @@
 function octave_example_threshold()
     more off;
-    
+
     HOST = "localhost";
     PORT = 4223;
     UID = "amb"; % Change to your UID
@@ -16,7 +16,7 @@ function octave_example_threshold()
 
     % Configure threshold for "greater than 200 Lux" (unit is Lux/100)
     al.setIlluminanceCallbackThreshold(al.THRESHOLD_OPTION_GREATER, 200*100, 0);
-    
+
     % Register threshold reached callback to function cb_reached
     al.addIlluminanceReachedCallback(@cb_reached);
 

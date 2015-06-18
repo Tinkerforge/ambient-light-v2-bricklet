@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[      6718,        161]
-NotebookOptionsPosition[      6442,        147]
-NotebookOutlinePosition[      6780,        162]
-CellTagsIndexPosition[      6737,        159]
+NotebookDataLength[      6776,        162]
+NotebookOptionsPosition[      6499,        148]
+NotebookOutlinePosition[      6838,        163]
+CellTagsIndexPosition[      6795,        160]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -64,11 +64,11 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"al", "@", 
    RowBox[{"SetDebouncePeriod", "[", "10000", "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
+  "\n", 
   RowBox[{"(*", " ", 
    RowBox[{
    "Callback", " ", "for", " ", "illuminance", " ", "greater", " ", "than", 
-    " ", "200", " ", "Lux"}], " ", "*)"}]}], "\n", 
+    " ", "200", " ", "Lux"}], " ", "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"IlluminanceReachedCB", "[", 
@@ -143,11 +143,12 @@ Cell[BoxData[{
    3.600608760452553*^9}, {3.600608824736239*^9, 3.600608825481593*^9}, 
    3.60060918655473*^9, {3.600609227515625*^9, 3.600609227953993*^9}, {
    3.600609340818445*^9, 3.600609544802136*^9}, {3.600609618298398*^9, 
-   3.6006096224709063`*^9}, 3.600610394591187*^9}]
+   3.6006096224709063`*^9}, 3.600610394591187*^9, {3.643606436943729*^9, 
+   3.643606437436389*^9}}]
 },
 WindowSize->{1521, 867},
 WindowMargins->{{196, Automatic}, {79, Automatic}},
-FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (November 20, 2012)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -162,9 +163,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[557, 20, 652, 12, 55, "Input"],
-Cell[1212, 34, 5226, 111, 693, "Input"]
+Cell[1212, 34, 5283, 112, 693, "Input"]
 }
 ]
 *)
 
 (* End of internal cache information *)
+

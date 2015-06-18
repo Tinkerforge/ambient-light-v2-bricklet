@@ -21,7 +21,7 @@ public class ExampleThreshold {
 		// Configure threshold for "greater than 200 Lux" (unit is Lux/100)
 		al.setIlluminanceCallbackThreshold('>', 200*100, 0);
 
-		// Add and implement illuminance reached listener 
+		// Add and implement illuminance reached listener
 		// (called if illuminance is greater than 200 lux)
 		al.addIlluminanceReachedListener(new BrickletAmbientLightV2.IlluminanceReachedListener() {
 			public void illuminanceReached(long illuminance) {
