@@ -13,7 +13,7 @@ Module ExampleSimple
         ' Don't use device before ipcon is connected
 
         ' Get current illuminance (unit is Lux/100)
-        Dim illuminance As Integer = al.GetIlluminance()
+        Dim illuminance As Long = al.GetIlluminance()
 
         System.Console.WriteLine("Illuminance: " + (illuminance/100.0).ToString() + " Lux")
 
