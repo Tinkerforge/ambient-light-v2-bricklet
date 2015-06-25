@@ -3,7 +3,7 @@ function octave_example_threshold()
 
     HOST = "localhost";
     PORT = 4223;
-    UID = "amb"; % Change to your UID
+    UID = "amb2"; % Change to your UID
 
     ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
     al = java_new("com.tinkerforge.BrickletAmbientLightV2", UID, ipcon); % Create device object
@@ -26,6 +26,14 @@ end
 
 % Callback function for illuminance callback (parameter has unit Lux/100)
 function cb_reached(e)
-    fprintf("We have %g Lux.\n", e.illuminance/100.0);
+    fprintf("We have %g Lux.\n", long2int(e.illuminance)/100.0);
     fprintf("Too bright, close the curtains!\n")
+end
+
+function int = long2int(long)
+    if compare_versions(version(), "3.8", "<=")
+        int = long.intValue();
+    else
+        int = long;
+    end
 end
