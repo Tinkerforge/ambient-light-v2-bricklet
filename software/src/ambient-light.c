@@ -86,8 +86,8 @@ void constructor(void) {
 	BA->PIO_Configure(&PIN_SCL, 1);
 
 	BC->data_counter = 0;
-	BC->integration_time = INTEGRATION_TIME_200MS;
-	BC->illuminance_range = RANGE_8000LUX;
+	BC->integration_time = 3; // 200ms
+	BC->illuminance_range = 3; // 8000lux
 	BC->throw_next_data_away = false;
 	// Sleep 100ms before and 10ms after initial init (see p22)
 	SLEEP_MS(100);
