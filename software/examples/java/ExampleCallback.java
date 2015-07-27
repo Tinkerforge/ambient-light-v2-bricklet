@@ -1,5 +1,5 @@
-import com.tinkerforge.BrickletAmbientLightV2;
 import com.tinkerforge.IPConnection;
+import com.tinkerforge.BrickletAmbientLightV2;
 
 public class ExampleCallback {
 	private static final String HOST = "localhost";
@@ -15,12 +15,12 @@ public class ExampleCallback {
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Set Period for illuminance callback to 1s (1000ms)
-		// Note: The illuminance callback is only called every second if the
-		//       illuminance has changed since the last call!
+		// Set period for illuminance callback to 1s (1000ms)
+		// Note: The illuminance callback is only called every second
+		//       if the illuminance has changed since the last call!
 		al.setIlluminanceCallbackPeriod(1000);
 
-		// Add and implement illuminance listener (called if illuminance changes)
+		// Add illuminance listener (parameter has unit Lux/100)
 		al.addIlluminanceListener(new BrickletAmbientLightV2.IlluminanceListener() {
 			public void illuminance(long illuminance) {
 				System.out.println("Illuminance: " + illuminance/100.0 + " Lux");

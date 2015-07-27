@@ -1,5 +1,5 @@
-import com.tinkerforge.BrickletAmbientLightV2;
 import com.tinkerforge.IPConnection;
+import com.tinkerforge.BrickletAmbientLightV2;
 
 public class ExampleThreshold {
 	private static final String HOST = "localhost";
@@ -18,14 +18,13 @@ public class ExampleThreshold {
 		// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 		al.setDebouncePeriod(10000);
 
-		// Configure threshold for "greater than 200 Lux" (unit is Lux/100)
-		al.setIlluminanceCallbackThreshold('>', 200*100, 0);
+		// Configure threshold for "greater than 1000 Lux" (unit is Lux/100)
+		al.setIlluminanceCallbackThreshold('>', 1000*100, 0);
 
-		// Add and implement illuminance reached listener
-		// (called if illuminance is greater than 200 lux)
+		// Add threshold reached listener for illuminance greater than 1000 Lux (parameter has unit Lux/100)
 		al.addIlluminanceReachedListener(new BrickletAmbientLightV2.IlluminanceReachedListener() {
 			public void illuminanceReached(long illuminance) {
-				System.out.println("We have: " + illuminance/100.0 + " Lux.");
+				System.out.println("Illuminance: " + illuminance/100.0 + " Lux");
 				System.out.println("Too bright, close the curtains!");
 			}
 		});

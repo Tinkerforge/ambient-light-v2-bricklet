@@ -19,14 +19,14 @@ ipcon.connect HOST, PORT # Connect to brickd
 # Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 al.set_debounce_period 10000
 
-# Register threshold reached callback for illuminance greater than 200 Lux
+# Register threshold reached callback for illuminance greater than 1000 Lux (parameter has unit Lux/100)
 al.register_callback(BrickletAmbientLightV2::CALLBACK_ILLUMINANCE_REACHED) do |illuminance|
-  puts "We have #{illuminance/100.0} Lux."
+  puts "Illuminance: #{illuminance/100.0} Lux"
   puts "Too bright, close the curtains!"
 end
 
-# Configure threshold for "greater than 200 Lux" (unit is Lux/100)
-al.set_illuminance_callback_threshold '>', 200*100, 0
+# Configure threshold for "greater than 1000 Lux" (unit is Lux/100)
+al.set_illuminance_callback_threshold '>', 1000*100, 0
 
 puts 'Press key to exit'
 $stdin.gets

@@ -16,7 +16,6 @@ class Example
 
 		// Get current illuminance (unit is Lux/100)
 		long illuminance = al.GetIlluminance();
-
 		System.Console.WriteLine("Illuminance: " + illuminance/100.0 + " Lux");
 
 		System.Console.WriteLine("Press enter to exit");

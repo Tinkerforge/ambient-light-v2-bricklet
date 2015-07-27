@@ -1,5 +1,5 @@
-import com.tinkerforge.BrickletAmbientLightV2;
 import com.tinkerforge.IPConnection;
+import com.tinkerforge.BrickletAmbientLightV2;
 
 public class ExampleSimple {
 	private static final String HOST = "localhost";
@@ -17,7 +17,6 @@ public class ExampleSimple {
 
 		// Get current illuminance (unit is Lux/100)
 		long illuminance = al.getIlluminance(); // Can throw com.tinkerforge.TimeoutException
-
 		System.out.println("Illuminance: " + illuminance/100.0 + " Lux");
 
 		System.out.println("Press key to exit"); System.in.read();

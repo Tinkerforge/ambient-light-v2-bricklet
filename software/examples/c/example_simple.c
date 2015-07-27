@@ -26,7 +26,7 @@ int main() {
 	// Get current illuminance (unit is Lux/100)
 	uint32_t illuminance;
 	if(ambient_light_v2_get_illuminance(&al, &illuminance) < 0) {
-		fprintf(stderr, "Could not get value, probably timeout\n");
+		fprintf(stderr, "Could not get illuminance, probably timeout\n");
 		exit(1);
 	}
 
