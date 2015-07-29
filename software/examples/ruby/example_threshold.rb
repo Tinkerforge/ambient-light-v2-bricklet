@@ -22,7 +22,7 @@ al.set_debounce_period 10000
 # Register threshold reached callback for illuminance greater than 1000 Lux (parameter has unit Lux/100)
 al.register_callback(BrickletAmbientLightV2::CALLBACK_ILLUMINANCE_REACHED) do |illuminance|
   puts "Illuminance: #{illuminance/100.0} Lux"
-  puts "Too bright, close the curtains!"
+  puts 'Too bright, close the curtains!'
 end
 
 # Configure threshold for "greater than 1000 Lux" (unit is Lux/100)
