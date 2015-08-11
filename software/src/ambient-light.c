@@ -109,7 +109,7 @@ void tick(const uint8_t tick_type) {
 			ltr_329_read_registers(REG_ALS_STATUS, &status, 1);
 
 			// Check if new data is available and valid
-			if((status & (1 << 2)) /*&& (!(status & (1 << 7)))*/) {
+			if((status & (1 << 2)) && (!(status & (1 << 7)))) {
 				// Read both channels
 				uint16_t data[2];
 				ltr_329_read_registers(REG_ALS_DATA_CH1, (uint8_t *)&data, 4);
@@ -162,18 +162,6 @@ void update_values(const uint16_t values[2], const uint8_t status) {
 	}
 
 	BC->value[0] = lux/(divider*100/multiplier);  // Calculate lux
-
-	// Cap lux measurement for each range to defined maximum if data invalid bit is set
-	if(status & (1 << 7)) {
-		switch(BC->illuminance_range) {
-			case 5: BC->value[0] = MIN(BC->value[0],   60000); break;
-			case 4: BC->value[0] = MIN(BC->value[0],  130000); break;
-			case 3: BC->value[0] = MIN(BC->value[0],  800000); break;
-			case 2: BC->value[0] = MIN(BC->value[0], 1600000); break;
-			case 1: BC->value[0] = MIN(BC->value[0], 3200000); break;
-			case 0: BC->value[0] = MIN(BC->value[0], 6400000); break;
-		}
-	}
 }
 
 void set_configuration(const ComType com, const SetConfiguration *data) {
