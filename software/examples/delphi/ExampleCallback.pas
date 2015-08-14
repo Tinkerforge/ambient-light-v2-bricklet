@@ -24,7 +24,7 @@ const
 var
   e: TExample;
 
-{ Callback function for illuminance callback (parameter has unit Lux/100) }
+{ Callback procedure for illuminance callback (parameter has unit Lux/100) }
 procedure TExample.IlluminanceCB(sender: TBrickletAmbientLightV2; const illuminance: longword);
 begin
   WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
@@ -42,9 +42,9 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
-  { Set Period for illuminance callback to 1s (1000ms)
-    Note: The illuminance callback is only called every second if the
-          illuminance has changed since the last call! }
+  { Set period for illuminance callback to 1s (1000ms)
+    Note: The illuminance callback is only called every second
+          if the illuminance has changed since the last call! }
   al.SetIlluminanceCallbackPeriod(1000);
 
   { Register illuminance callback to procedure IlluminanceCB }
