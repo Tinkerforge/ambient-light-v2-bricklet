@@ -14,7 +14,6 @@ Module ExampleSimple
 
         ' Get current illuminance (unit is Lux/100)
         Dim illuminance As Long = al.GetIlluminance()
-
         System.Console.WriteLine("Illuminance: " + (illuminance/100.0).ToString() + " Lux")
 
         System.Console.WriteLine("Press key to exit")
