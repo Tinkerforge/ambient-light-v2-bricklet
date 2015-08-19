@@ -14,8 +14,8 @@ $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
 
 # Get current illuminance (unit is Lux/100)
-my $illuminance = $al->get_illuminance()/100.0;
-print "Illuminance: $illuminance Lux\n";
+my $illuminance = $al->get_illuminance();
+print "Illuminance: " . $illuminance/100.0 . " Lux\n";
 
 print "Press any key to exit...\n";
 <STDIN>;
