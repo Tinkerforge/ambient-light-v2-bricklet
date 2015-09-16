@@ -33,6 +33,7 @@
 #define REG_ALS_DATA_CH0  0x8A // 2 bytes
 #define REG_ALS_STATUS    0x8C
 
+// These are sensor register values, NOT Bricklet API constant values
 #define RANGE_64000LUX 0
 #define RANGE_32000LUX 1
 #define RANGE_16000LUX 2
@@ -40,6 +41,7 @@
 #define RANGE_1300LUX  6
 #define RANGE_600LUX   7
 
+// These are sensor register values, NOT Bricklet API constant values
 #define INTEGRATION_TIME_100MS 0
 #define INTEGRATION_TIME_50MS  1
 #define INTEGRATION_TIME_200MS 2

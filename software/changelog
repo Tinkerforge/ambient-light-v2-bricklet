@@ -3,3 +3,8 @@
 
 2.0.1:
 - Completely ignore invalid values
+
+2.0.2:
+- Report sensor saturation as 0lux
+- Clamp measured values to the configured illuminance range
+- Add new unlimited illuminance range for unclamped measurements

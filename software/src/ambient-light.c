@@ -108,15 +108,20 @@ void tick(const uint8_t tick_type) {
 			uint8_t status;
 			ltr_329_read_registers(REG_ALS_STATUS, &status, 1);
 
-			// Check if new data is available and valid
-			if((status & (1 << 2)) && (!(status & (1 << 7)))) {
-				// Read both channels
-				uint16_t data[2];
-				ltr_329_read_registers(REG_ALS_DATA_CH1, (uint8_t *)&data, 4);
-				if(BC->throw_next_data_away) {
-					BC->throw_next_data_away = false;
+			// Check if new data is available
+			if(status & (1 << 2)) {
+				// Check if new data is invalid
+				if(status & (1 << 7)) {
+					BC->value[0] = 0; // 0 means sensor is saturated
 				} else {
-					update_values(data, status);
+					// Read both channels
+					uint16_t data[2];
+					ltr_329_read_registers(REG_ALS_DATA_CH1, (uint8_t *)&data, 4);
+					if(BC->throw_next_data_away) {
+						BC->throw_next_data_away = false;
+					} else {
+						update_values(data, status);
+					}
 				}
 			}
 		}
@@ -161,11 +166,26 @@ void update_values(const uint16_t values[2], const uint8_t status) {
 		case 7: divider *= 4;                 break;
 	}
 
-	BC->value[0] = lux/(divider*100/multiplier);  // Calculate lux
+	lux /= divider * 100 / multiplier; // Calculate lux
+
+	// Cap lux measurement for each range to defined maximum +0.01 lux.
+	// This allows to distinguisch between the last value inside the range and
+	// out-of-range values.
+	switch(BC->illuminance_range) {
+		case 6:                               break; // Unlimited
+		case 5: lux = MIN(lux,   60001);      break;
+		case 4: lux = MIN(lux,  130001);      break;
+		case 3: lux = MIN(lux,  800001);      break;
+		case 2: lux = MIN(lux, 1600001);      break;
+		case 1: lux = MIN(lux, 3200001);      break;
+		case 0: lux = MIN(lux, 6400001);      break;
+	}
+
+	BC->value[0] = MAX(lux, 1); // Avoid 0, it means sensor is saturated
 }
 
 void set_configuration(const ComType com, const SetConfiguration *data) {
-	if((data->integration_time > 7) || (data->illuminance_range > 5)) {
+	if((data->integration_time > 7) || (data->illuminance_range > 6)) {
 		BA->com_return_error(data, sizeof(MessageHeader), MESSAGE_ERROR_CODE_INVALID_PARAMETER, com);
 		return;
 	}
@@ -197,6 +217,7 @@ void update_configuration(void) {
 		case 3: range = RANGE_8000LUX; break;
 		case 4: range = RANGE_1300LUX; break;
 		case 5: range = RANGE_600LUX; break;
+		case 6: range = RANGE_64000LUX; break; // Unlimited
 	}
 
 	uint8_t time = INTEGRATION_TIME_200MS;
