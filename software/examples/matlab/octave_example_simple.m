@@ -3,7 +3,7 @@ function octave_example_simple()
 
     HOST = "localhost";
     PORT = 4223;
-    UID = "amb2"; % Change to your UID
+    UID = "XYZ"; % Change to your UID
 
     ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
     al = java_new("com.tinkerforge.BrickletAmbientLightV2", UID, ipcon); % Create device object
@@ -13,16 +13,16 @@ function octave_example_simple()
 
     % Get current illuminance (unit is Lux/100)
     illuminance = al.getIlluminance();
-    fprintf("Illuminance: %g Lux\n", long2int(illuminance)/100.0);
+    fprintf("Illuminance: %g Lux\n", java2int(illuminance)/100.0);
 
-    input("Press any key to exit...\n", "s");
+    input("Press key to exit\n", "s");
     ipcon.disconnect();
 end
 
-function int = long2int(long)
+function int = java2int(value)
     if compare_versions(version(), "3.8", "<=")
-        int = long.intValue();
+        int = value.intValue();
     else
-        int = long;
+        int = value;
     end
 end

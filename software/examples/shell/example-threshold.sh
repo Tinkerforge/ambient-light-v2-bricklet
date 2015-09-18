@@ -1,15 +1,18 @@
 #!/bin/sh
-# connects to localhost:4223 by default, use --host and --port to change it
+# Connects to localhost:4223 by default, use --host and --port to change this
 
-# change to your UID
-uid=XYZ
+uid=XYZ # Change to your UID
 
-# get threshold callbacks with a debounce time of 10 seconds (10000ms)
+# Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 tinkerforge call ambient-light-v2-bricklet $uid set-debounce-period 10000
 
-# configure threshold for "greater than 200 Lux" (unit is Lux/100)
-tinkerforge call ambient-light-v2-bricklet $uid set-illuminance-callback-threshold greater 20000 0
-
-# handle incoming illuminance-reached callbacks (unit is Lux/100)
+# Handle incoming illuminance reached callbacks (parameter has unit Lux/100)
 tinkerforge dispatch ambient-light-v2-bricklet $uid illuminance-reached\
- --execute "echo We have {illuminance} Lux/100. Too bright, close the curtains!"
+ --execute "echo Illuminance: {illuminance} Lux/100. Too bright, close the curtains!" &
+
+# Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+tinkerforge call ambient-light-v2-bricklet $uid set-illuminance-callback-threshold greater 50000 0
+
+echo "Press key to exit"; read dummy
+
+kill -- -$$ # Stop callback dispatch in background

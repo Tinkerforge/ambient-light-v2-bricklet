@@ -6,7 +6,7 @@
     </head>
     <body>
         <div style="text-align:center;">
-            <h1>Ambient Light 2.0 Bricklet Threshold Example</h1>
+            <h1>Ambient Light Bricklet 2.0 Threshold Example</h1>
             <p>
                 <input value="localhost" id="host" type="text" size="20">:
                 <input value="4280" id="port" type="text" size="5">,
@@ -34,24 +34,26 @@
                 var al = new Tinkerforge.BrickletAmbientLightV2(UID, ipcon); // Create device object
                 ipcon.connect(HOST, PORT,
                     function(error) {
-                        textArea.value += 'Error: '+error+ '\n';
+                        textArea.value += 'Error: ' + error + '\n';
                     }
                 ); // Connect to brickd
                 // Don't use device before ipcon is connected
 
                 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
-                    function(connectReason) {
+                    function (connectReason) {
                         // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
                         al.setDebouncePeriod(10000);
-                        // Configure threshold for "greater than 200 Lux" (unit is Lux/100)
-                        al.setIlluminanceCallbackThreshold('>', 200*100, 0);
+
+                        // Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+                        al.setIlluminanceCallbackThreshold('>', 500*100, 0);
                     }
                 );
-                // Register threshold reached callback to function cb_reached
+
+                // Register illuminance reached callback
                 al.on(Tinkerforge.BrickletAmbientLightV2.CALLBACK_ILLUMINANCE_REACHED,
-                    // Callback for illuminance greater than 200 Lux
-                    function(illuminance) {
-                        textArea.value += 'We have ' + illuminance/100 + ' Lux.\n';
+                    // Callback function for illuminance reached callback (parameter has unit Lux/100)
+                    function (illuminance) {
+                        textArea.value += 'Illuminance: ' + illuminance/100.0 + ' Lux\n';
                         textArea.value += 'Too bright, close the curtains!\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }

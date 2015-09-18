@@ -3,32 +3,32 @@ LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
 
 host="localhost"
 port=4223
-uid="amb"(* Change to your UID *)
+uid="XYZ"(*Change to your UID*)
 
-(* Create IPConnection and device object *)
+(*Create IPConnection and device object*)
 ipcon=NETNew["Tinkerforge.IPConnection"]
 al=NETNew["Tinkerforge.BrickletAmbientLightV2",uid,ipcon]
 ipcon@Connect[host,port]
 
-(* Get threshold callbacks with a debounce time of 10 seconds (10000ms) *)
+(*Get threshold callbacks with a debounce time of 10 seconds (10000ms)*)
 al@SetDebouncePeriod[10000]
 
-(* Callback for illuminance greater than 200 Lux *)
+(*Callback function for illuminance reached callback (parameter has unit Lux/100)*)
 IlluminanceReachedCB[sender_,illuminance_]:=
  Module[{},
-  Print["We have "<>ToString[N[Quantity[illuminance,"Lux/100"]]]<>"."];
+  Print["Illuminance: "<>ToString[N[Quantity[illuminance,"Lux/100"]]]];
   Print["Too bright, close the curtains!"]
  ]
 
 AddEventHandler[al@IlluminanceReached,IlluminanceReachedCB]
 
-(* Configure threshold for "greater than 200 Lux" (unit is Lux/100) *)
+(*Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)*)
 option=Tinkerforge`BrickletAmbientLightV2`THRESHOLDUOPTIONUGREATER
-al@SetIlluminanceCallbackThreshold[option,200*100,0]
+al@SetIlluminanceCallbackThreshold[option,500*100,0]
 
 Input["Click OK to exit"]
 
-(* Clean up *)
+(*Clean up*)
 ipcon@Disconnect[]
 ReleaseNETObject[al]
 ReleaseNETObject[ipcon]

@@ -3,7 +3,7 @@ function octave_example_threshold()
 
     HOST = "localhost";
     PORT = 4223;
-    UID = "amb2"; % Change to your UID
+    UID = "XYZ"; % Change to your UID
 
     ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
     al = java_new("com.tinkerforge.BrickletAmbientLightV2", UID, ipcon); % Create device object
@@ -11,29 +11,29 @@ function octave_example_threshold()
     ipcon.connect(HOST, PORT); % Connect to brickd
     % Don't use device before ipcon is connected
 
-    % Set threshold callbacks with a debounce time of 10 seconds (10000ms)
+    % Get threshold callbacks with a debounce time of 10 seconds (10000ms)
     al.setDebouncePeriod(10000);
 
-    % Configure threshold for "greater than 200 Lux" (unit is Lux/100)
-    al.setIlluminanceCallbackThreshold(al.THRESHOLD_OPTION_GREATER, 200*100, 0);
+    % Register illuminance reached callback to function cb_illuminance_reached
+    al.addIlluminanceReachedCallback(@cb_illuminance_reached);
 
-    % Register threshold reached callback to function cb_reached
-    al.addIlluminanceReachedCallback(@cb_reached);
+    % Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+    al.setIlluminanceCallbackThreshold(">", 500*100, 0);
 
-    input("Press any key to exit...\n", "s");
+    input("Press key to exit\n", "s");
     ipcon.disconnect();
 end
 
-% Callback function for illuminance callback (parameter has unit Lux/100)
-function cb_reached(e)
-    fprintf("We have %g Lux.\n", long2int(e.illuminance)/100.0);
-    fprintf("Too bright, close the curtains!\n")
+% Callback function for illuminance reached callback (parameter has unit Lux/100)
+function cb_illuminance_reached(e)
+    fprintf("Illuminance: %g Lux\n", java2int(e.illuminance)/100.0);
+    fprintf("Too bright, close the curtains!\n");
 end
 
-function int = long2int(long)
+function int = java2int(value)
     if compare_versions(version(), "3.8", "<=")
-        int = long.intValue();
+        int = value.intValue();
     else
-        int = long;
+        int = value;
     end
 end

@@ -17,9 +17,8 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
 // Get current illuminance (unit is Lux/100)
-$illuminance = $al->getIlluminance() / 100.0;
-
-echo "Illuminance: $illuminance Lux\n";
+$illuminance = $al->getIlluminance();
+echo "Illuminance: " . $illuminance/100.0 . " Lux\n";
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));
