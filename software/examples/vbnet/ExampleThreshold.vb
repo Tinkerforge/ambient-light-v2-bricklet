@@ -7,7 +7,8 @@ Module ExampleThreshold
     Const UID As String = "XYZ" ' Change to your UID
 
     ' Callback subroutine for illuminance reached callback (parameter has unit Lux/100)
-    Sub IlluminanceReachedCB(ByVal sender As BrickletAmbientLightV2, ByVal illuminance As Long)
+    Sub IlluminanceReachedCB(ByVal sender As BrickletAmbientLightV2, _
+                             ByVal illuminance As Long)
         Console.WriteLine("Illuminance: " + (illuminance/100.0).ToString() + " Lux")
         Console.WriteLine("Too bright, close the curtains!")
     End Sub
