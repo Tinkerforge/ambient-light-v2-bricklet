@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew "(2015-03-18 BZR 5525)-product")
+(kicad_pcb (version 4) (host pcbnew 4.0.2-4+6225~38~ubuntu15.10.1-stable)
 
   (general
     (links 21)
     (no_connects 0)
-    (area 128.580957 85.594999 264.203574 149.675)
+    (area 128.994999 85.594999 264.203574 149.675)
     (thickness 1.6)
     (drawings 11)
     (tracks 95)
@@ -24,7 +24,7 @@
 
   (layers
     (0 F.Cu signal)
-    (31 B.Cu signal)
+    (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -42,7 +42,7 @@
     (46 B.CrtYd user)
     (47 F.CrtYd user)
     (48 B.Fab user)
-    (49 F.Fab user)
+    (49 F.Fab user hide)
   )
 
   (setup
@@ -73,7 +73,7 @@
     (aux_axis_origin 0 0)
     (visible_elements FFFFE77F)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
+      (layerselection 0x010f8_80000001)
       (usegerberextensions false)
       (excludeedgelayer true)
       (linewidth 0.100000)
@@ -94,9 +94,9 @@
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory /tmp/ambient/))
   )
 
   (net 0 "")
@@ -164,14 +164,15 @@
       (net 2 VCC))
   )
 
-  (module kicad-libraries:CON-SENSOR (layer F.Cu) (tedit 547F0058) (tstamp 551D46DD)
+  (module kicad-libraries:CON-SENSOR (layer F.Cu) (tedit 56C5915B) (tstamp 551D46DD)
     (at 142.4 86.5 180)
     (path /4C5FCF27)
-    (fp_text reference P1 (at 7.9502 -3.50012 180) (layer F.SilkS)
-      (effects (font (size 0.59944 0.59944) (thickness 0.12446)))
+    (attr smd)
+    (fp_text reference P1 (at 2.5 -1.6 180) (layer F.SilkS)
+      (effects (font (size 0.15 0.15) (thickness 0.0375)))
     )
     (fp_text value CON-SENSOR (at 0 -1.6002 180) (layer F.SilkS)
-      (effects (font (size 0.29972 0.29972) (thickness 0.07112)))
+      (effects (font (size 0.15 0.15) (thickness 0.0375)))
     )
     (fp_line (start 5.99948 0) (end 5.99948 -4.24942) (layer F.SilkS) (width 0.01))
     (fp_line (start 5.99948 -4.24942) (end -5.99948 -4.24942) (layer F.SilkS) (width 0.01))
@@ -240,14 +241,15 @@
       (net 7 "Net-(P1-Pad8)"))
   )
 
-  (module kicad-libraries:LTR-329ALS (layer F.Cu) (tedit 551D4611) (tstamp 551D46FD)
+  (module kicad-libraries:LTR-329ALS (layer F.Cu) (tedit 56C5914A) (tstamp 551D46FD)
     (at 141.8 97.1)
     (path /551D4B1A)
+    (attr smd)
     (fp_text reference U2 (at 0 0.5) (layer F.SilkS)
-      (effects (font (size 1 1) (thickness 0.15)))
+      (effects (font (size 0.15 0.15) (thickness 0.0375)))
     )
     (fp_text value LTR-329ALS (at 0 -0.5) (layer F.Fab)
-      (effects (font (size 1 1) (thickness 0.15)))
+      (effects (font (size 0.15 0.15) (thickness 0.0375)))
     )
     (fp_line (start -1 -1) (end 1 -1) (layer F.SilkS) (width 0.15))
     (fp_line (start 1 -1) (end 1 1) (layer F.SilkS) (width 0.15))
@@ -351,10 +353,11 @@
       (clearance 0.89916))
   )
 
-  (module kicad-libraries:SOIC8 (layer F.Cu) (tedit 547F003A) (tstamp 551D46F5)
+  (module kicad-libraries:SOIC8 (layer F.Cu) (tedit 56C59138) (tstamp 551D46F5)
     (at 146.4 96.1 180)
     (path /4C5FD337)
-    (fp_text reference U1 (at 3.29946 2.60096 180) (layer F.SilkS)
+    (attr smd)
+    (fp_text reference U1 (at 0 0.6 180) (layer F.SilkS)
       (effects (font (size 0.29972 0.29972) (thickness 0.0762)))
     )
     (fp_text value M24C64 (at 0 0 180) (layer F.SilkS)
@@ -386,6 +389,7 @@
 
   (module kicad-libraries:Logo_31x31 (layer F.Cu) (tedit 4F1D86B0) (tstamp 551D4A61)
     (at 131.7 95.6 90)
+    (attr smd)
     (fp_text reference G*** (at 1.34874 2.97434 90) (layer F.SilkS) hide
       (effects (font (size 0.29972 0.29972) (thickness 0.0762)))
     )
@@ -5838,6 +5842,7 @@
 
   (module kicad-libraries:WEEE_7mm_back (layer B.Cu) (tedit 0) (tstamp 551D4AE1)
     (at 136 94 90)
+    (attr smd)
     (fp_text reference VAL (at 0 0 90) (layer B.SilkS) hide
       (effects (font (size 1.143 1.143) (thickness 0.1778)) (justify mirror))
     )
@@ -6266,6 +6271,7 @@
 
   (module kicad-libraries:CE_5mm (layer B.Cu) (tedit 0) (tstamp 551D4AE7)
     (at 149.4 94 270)
+    (attr smd)
     (fp_text reference VAL (at 0 0 270) (layer B.SilkS) hide
       (effects (font (size 1.143 1.143) (thickness 0.1778)) (justify mirror))
     )
