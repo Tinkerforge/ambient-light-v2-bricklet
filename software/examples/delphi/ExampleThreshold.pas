@@ -25,7 +25,8 @@ var
   e: TExample;
 
 { Callback procedure for illuminance reached callback (parameter has unit Lux/100) }
-procedure TExample.IlluminanceReachedCB(sender: TBrickletAmbientLightV2; const illuminance: longword);
+procedure TExample.IlluminanceReachedCB(sender: TBrickletAmbientLightV2;
+                                        const illuminance: longword);
 begin
   WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
   WriteLn('Too bright, close the curtains!');
