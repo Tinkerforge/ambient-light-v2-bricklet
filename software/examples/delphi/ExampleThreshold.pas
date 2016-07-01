@@ -12,7 +12,8 @@ type
     ipcon: TIPConnection;
     al: TBrickletAmbientLightV2;
   public
-    procedure IlluminanceReachedCB(sender: TBrickletAmbientLightV2; const illuminance: longword);
+    procedure IlluminanceReachedCB(sender: TBrickletAmbientLightV2;
+                                   const illuminance: longword);
     procedure Execute;
   end;
 
