@@ -3,7 +3,7 @@ function octave_example_simple()
 
     HOST = "localhost";
     PORT = 4223;
-    UID = "XYZ"; % Change to your UID
+    UID = "XYZ"; % Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
     ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
     al = java_new("com.tinkerforge.BrickletAmbientLightV2", UID, ipcon); % Create device object

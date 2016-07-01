@@ -5,7 +5,7 @@ class Example
 {
 	private static string HOST = "localhost";
 	private static int PORT = 4223;
-	private static string UID = "XYZ"; // Change to your UID
+	private static string UID = "XYZ"; // Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
 	// Callback function for illuminance reached callback (parameter has unit Lux/100)
 	static void IlluminanceReachedCB(BrickletAmbientLightV2 sender, long illuminance)

@@ -5,7 +5,7 @@ use Tinkerforge::BrickletAmbientLightV2;
 
 use constant HOST => 'localhost';
 use constant PORT => 4223;
-use constant UID => 'XYZ'; # Change to your UID
+use constant UID => 'XYZ'; # Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
 # Callback subroutine for illuminance reached callback (parameter has unit Lux/100)
 sub cb_illuminance_reached

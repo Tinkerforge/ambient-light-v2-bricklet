@@ -4,7 +4,7 @@ Imports Tinkerforge
 Module ExampleCallback
     Const HOST As String = "localhost"
     Const PORT As Integer = 4223
-    Const UID As String = "XYZ" ' Change to your UID
+    Const UID As String = "XYZ" ' Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
     ' Callback subroutine for illuminance callback (parameter has unit Lux/100)
     Sub IlluminanceCB(ByVal sender As BrickletAmbientLightV2, ByVal illuminance As Long)

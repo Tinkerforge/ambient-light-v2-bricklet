@@ -8,7 +8,7 @@ include Tinkerforge
 
 HOST = 'localhost'
 PORT = 4223
-UID = 'XYZ' # Change to your UID
+UID = 'XYZ' # Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
 ipcon = IPConnection.new # Create IP connection
 al = BrickletAmbientLightV2.new UID, ipcon # Create device object
