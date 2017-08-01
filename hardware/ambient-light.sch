@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:tinkerforge
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -10,7 +11,6 @@ LIBS:cmos4000
 LIBS:adc-dac
 LIBS:memory
 LIBS:xilinx
-LIBS:special
 LIBS:microcontrollers
 LIBS:dsp
 LIBS:microchip
@@ -29,8 +29,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:tinkerforge
-LIBS:ambient-light-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -87,8 +85,6 @@ Wire Wire Line
 Connection ~ 5150 4550
 Wire Wire Line
 	4000 3200 4250 3200
-Wire Wire Line
-	4250 3200 4250 3350
 NoConn ~ 5150 4750
 $Comp
 L GND #PWR01
@@ -107,7 +103,7 @@ U 1 1 4CE147C5
 P 5400 4550
 F 0 "C1" V 5200 4550 50  0000 L CNN
 F 1 "100nF" V 5550 4550 50  0000 L CNN
-F 2 "kicad-libraries:0603" H 5400 4550 60  0001 C CNN
+F 2 "kicad-libraries:C0603" H 5400 4550 60  0001 C CNN
 F 3 "" H 5400 4550 60  0001 C CNN
 	1    5400 4550
 	0    1    1    0   
@@ -211,12 +207,12 @@ $EndComp
 $Comp
 L GND #PWR05
 U 1 1 4C5FCF5E
-P 4250 3350
-F 0 "#PWR05" H 4250 3350 30  0001 C CNN
-F 1 "GND" H 4250 3280 30  0001 C CNN
-F 2 "" H 4250 3350 60  0001 C CNN
-F 3 "" H 4250 3350 60  0001 C CNN
-	1    4250 3350
+P 4250 3300
+F 0 "#PWR05" H 4250 3300 30  0001 C CNN
+F 1 "GND" H 4250 3230 30  0001 C CNN
+F 2 "" H 4250 3300 60  0001 C CNN
+F 3 "" H 4250 3300 60  0001 C CNN
+	1    4250 3300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -280,7 +276,7 @@ U 1 1 551D450D
 P 6550 2900
 F 0 "C2" V 6350 2900 50  0000 L CNN
 F 1 "100nF" V 6700 2800 50  0000 L CNN
-F 2 "kicad-libraries:0603" H 6550 2900 60  0001 C CNN
+F 2 "kicad-libraries:C0603" H 6550 2900 60  0001 C CNN
 F 3 "" H 6550 2900 60  0001 C CNN
 	1    6550 2900
 	0    1    1    0   
@@ -323,7 +319,7 @@ U 1 1 551D46F1
 P 5500 2900
 F 0 "R1" V 5580 2900 50  0000 C CNN
 F 1 "2k2" V 5500 2900 50  0000 C CNN
-F 2 "kicad-libraries:0603" H 5500 2900 60  0001 C CNN
+F 2 "kicad-libraries:R0603" H 5500 2900 60  0001 C CNN
 F 3 "" H 5500 2900 60  0000 C CNN
 	1    5500 2900
 	1    0    0    -1  
@@ -334,7 +330,7 @@ U 1 1 551D4770
 P 5700 2900
 F 0 "R2" V 5780 2900 50  0000 C CNN
 F 1 "2k2" V 5700 2900 50  0000 C CNN
-F 2 "kicad-libraries:0603" H 5700 2900 60  0001 C CNN
+F 2 "kicad-libraries:R0603" H 5700 2900 60  0001 C CNN
 F 3 "" H 5700 2900 60  0000 C CNN
 	1    5700 2900
 	1    0    0    -1  
@@ -371,4 +367,8 @@ Connection ~ 5500 3300
 Wire Wire Line
 	5700 3150 5700 3400
 Connection ~ 5700 3400
+Wire Wire Line
+	4250 3200 4250 3300
+NoConn ~ 4000 3900
+NoConn ~ 4000 4000
 $EndSCHEMATC
