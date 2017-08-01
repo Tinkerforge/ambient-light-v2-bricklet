@@ -11,7 +11,7 @@ tinkerforge dispatch ambient-light-v2-bricklet $uid illuminance-reached\
  --execute "echo Illuminance: {illuminance} Lux/100. Too bright, close the curtains!" &
 
 # Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
-tinkerforge call ambient-light-v2-bricklet $uid set-illuminance-callback-threshold greater 50000 0
+tinkerforge call ambient-light-v2-bricklet $uid set-illuminance-callback-threshold threshold-option-greater 50000 0
 
 echo "Press key to exit"; read dummy
 
