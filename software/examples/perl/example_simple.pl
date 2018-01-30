@@ -13,9 +13,9 @@ my $al = Tinkerforge::BrickletAmbientLightV2->new(&UID, $ipcon); # Create device
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Get current illuminance (unit is Lux/100)
+# Get current illuminance
 my $illuminance = $al->get_illuminance();
-print "Illuminance: " . $illuminance/100.0 . " Lux\n";
+print "Illuminance: " . $illuminance/100.0 . " lx\n";
 
 print "Press key to exit\n";
 <STDIN>;

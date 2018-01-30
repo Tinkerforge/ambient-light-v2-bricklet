@@ -7,12 +7,12 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => 'XYZ'; # Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-# Callback subroutine for illuminance callback (parameter has unit Lux/100)
+# Callback subroutine for illuminance callback
 sub cb_illuminance
 {
     my ($illuminance) = @_;
 
-    print "Illuminance: " . $illuminance/100.0 . " Lux\n";
+    print "Illuminance: " . $illuminance/100.0 . " lx\n";
 }
 
 my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection

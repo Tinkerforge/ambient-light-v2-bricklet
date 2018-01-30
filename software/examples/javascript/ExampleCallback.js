@@ -25,9 +25,9 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
 
 // Register illuminance callback
 al.on(Tinkerforge.BrickletAmbientLightV2.CALLBACK_ILLUMINANCE,
-    // Callback function for illuminance callback (parameter has unit Lux/100)
+    // Callback function for illuminance callback
     function (illuminance) {
-        console.log('Illuminance: ' + illuminance/100.0 + ' Lux');
+        console.log('Illuminance: ' + illuminance/100.0 + ' lx');
     }
 );
 

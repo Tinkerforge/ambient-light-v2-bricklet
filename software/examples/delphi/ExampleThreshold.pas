@@ -25,11 +25,11 @@ const
 var
   e: TExample;
 
-{ Callback procedure for illuminance reached callback (parameter has unit Lux/100) }
+{ Callback procedure for illuminance reached callback }
 procedure TExample.IlluminanceReachedCB(sender: TBrickletAmbientLightV2;
                                         const illuminance: longword);
 begin
-  WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
+  WriteLn(Format('Illuminance: %f lx', [illuminance/100.0]));
   WriteLn('Too bright, close the curtains!');
 end;
 
@@ -51,7 +51,7 @@ begin
   { Register illuminance reached callback to procedure IlluminanceReachedCB }
   al.OnIlluminanceReached := {$ifdef FPC}@{$endif}IlluminanceReachedCB;
 
-  { Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100) }
+  { Configure threshold for illuminance "greater than 500 lx" }
   al.SetIlluminanceCallbackThreshold('>', 500*100, 0);
 
   WriteLn('Press key to exit');

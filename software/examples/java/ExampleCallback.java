@@ -17,10 +17,10 @@ public class ExampleCallback {
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Add illuminance listener (parameter has unit Lux/100)
+		// Add illuminance listener
 		al.addIlluminanceListener(new BrickletAmbientLightV2.IlluminanceListener() {
 			public void illuminance(long illuminance) {
-				System.out.println("Illuminance: " + illuminance/100.0 + " Lux");
+				System.out.println("Illuminance: " + illuminance/100.0 + " lx");
 			}
 		});
 

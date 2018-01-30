@@ -10,8 +10,8 @@ ipcon=NETNew["Tinkerforge.IPConnection"]
 al=NETNew["Tinkerforge.BrickletAmbientLightV2",uid,ipcon]
 ipcon@Connect[host,port]
 
-(*Get current illuminance (unit is Lux/100)*)
-Print["Illuminance: "<>ToString[N[Quantity[al@GetIlluminance[],"Lux/100"]]]]
+(*Get current illuminance*)
+Print["Illuminance: "<>ToString[N[Quantity[al@GetIlluminance[],"lx/100"]]]]
 
 (*Clean up*)
 ipcon@Disconnect[]

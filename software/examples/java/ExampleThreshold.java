@@ -20,15 +20,15 @@ public class ExampleThreshold {
 		// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 		al.setDebouncePeriod(10000);
 
-		// Add illuminance reached listener (parameter has unit Lux/100)
+		// Add illuminance reached listener
 		al.addIlluminanceReachedListener(new BrickletAmbientLightV2.IlluminanceReachedListener() {
 			public void illuminanceReached(long illuminance) {
-				System.out.println("Illuminance: " + illuminance/100.0 + " Lux");
+				System.out.println("Illuminance: " + illuminance/100.0 + " lx");
 				System.out.println("Too bright, close the curtains!");
 			}
 		});
 
-		// Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+		// Configure threshold for illuminance "greater than 500 lx"
 		al.setIlluminanceCallbackThreshold('>', 500*100, 0);
 
 		System.out.println("Press key to exit"); System.in.read();

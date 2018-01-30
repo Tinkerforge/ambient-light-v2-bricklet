@@ -22,14 +22,14 @@ Notebook[{
    RowBox[{"al", "@", RowBox[{"SetDebouncePeriod", "[", "10000", "]"}]}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Callback function for illuminance reached callback (parameter has unit Lux/100)", "*)"}],
-   RowBox[{RowBox[{"IlluminanceReachedCB", "[", RowBox[{"sender_", ",", "illuminance_"}], "]"}], ":=", "\[IndentingNewLine]", RowBox[{"Module", "[", RowBox[{RowBox[{"{", "}"}], ",", RowBox[{"\[IndentingNewLine]", RowBox[{"Print", "[", RowBox[{"\"\<Illuminance: \>\"", "<>", RowBox[{"ToString", "[", RowBox[{"N", "[", RowBox[{"Quantity", "[", RowBox[{"illuminance", ",", "\"\<Lux/100\>\""}], "]"}], "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", RowBox[{"Print", "[", "\"\<Too bright, close the curtains!\>\"", "]"}], "\[IndentingNewLine]"}]}], "]"}]}],
+   RowBox[{"(*", "Callback function for illuminance reached callback", "*)"}],
+   RowBox[{RowBox[{"IlluminanceReachedCB", "[", RowBox[{"sender_", ",", "illuminance_"}], "]"}], ":=", "\[IndentingNewLine]", RowBox[{"Module", "[", RowBox[{RowBox[{"{", "}"}], ",", RowBox[{"\[IndentingNewLine]", RowBox[{"Print", "[", RowBox[{"\"\<Illuminance: \>\"", "<>", RowBox[{"ToString", "[", RowBox[{"N", "[", RowBox[{"Quantity", "[", RowBox[{"illuminance", ",", "\"\<lx/100\>\""}], "]"}], "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", RowBox[{"Print", "[", "\"\<Too bright, close the curtains!\>\"", "]"}], "\[IndentingNewLine]"}]}], "]"}]}],
    RowBox[{"
 "}],
    RowBox[{"AddEventHandler", "[", RowBox[{RowBox[{"al", "@", "IlluminanceReachedCallback"}], ",", "IlluminanceReachedCB"}], "]"}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Configure threshold for illuminance ", "\"\<greater than 500 Lux\>\"", " (unit is Lux/100)", "*)"}],
+   RowBox[{"(*", "Configure threshold for illuminance ", "\"\<greater than 500 lx\>\"", "", "*)"}],
    RowBox[{"option", "=", "Tinkerforge`BrickletAmbientLightV2`THRESHOLDUOPTIONUGREATER"}],
    RowBox[{"al", "@", RowBox[{"SetIlluminanceCallbackThreshold", "[", RowBox[{"option", ",", RowBox[{"500", "*", "100"}], ",", "0"}], "]"}]}],
    RowBox[{"

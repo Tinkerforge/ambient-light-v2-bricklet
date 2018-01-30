@@ -10,10 +10,10 @@ const HOST = 'localhost';
 const PORT = 4223;
 const UID = 'XYZ'; // Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-// Callback function for illuminance reached callback (parameter has unit Lux/100)
+// Callback function for illuminance reached callback
 function cb_illuminanceReached($illuminance)
 {
-    echo "Illuminance: " . $illuminance/100.0 . " Lux\n";
+    echo "Illuminance: " . $illuminance/100.0 . " lx\n";
     echo "Too bright, close the curtains!\n";
 }
 
@@ -30,7 +30,7 @@ $al->setDebouncePeriod(10000);
 $al->registerCallback(BrickletAmbientLightV2::CALLBACK_ILLUMINANCE_REACHED,
                       'cb_illuminanceReached');
 
-// Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+// Configure threshold for illuminance "greater than 500 lx"
 $al->setIlluminanceCallbackThreshold('>', 500*100, 0);
 
 echo "Press ctrl+c to exit\n";

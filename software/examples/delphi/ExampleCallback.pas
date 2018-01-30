@@ -24,11 +24,11 @@ const
 var
   e: TExample;
 
-{ Callback procedure for illuminance callback (parameter has unit Lux/100) }
+{ Callback procedure for illuminance callback }
 procedure TExample.IlluminanceCB(sender: TBrickletAmbientLightV2;
                                  const illuminance: longword);
 begin
-  WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
+  WriteLn(Format('Illuminance: %f lx', [illuminance/100.0]));
 end;
 
 procedure TExample.Execute;

@@ -36,9 +36,9 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
-  { Get current illuminance (unit is Lux/100) }
+  { Get current illuminance }
   illuminance := al.GetIlluminance;
-  WriteLn(Format('Illuminance: %f Lux', [illuminance/100.0]));
+  WriteLn(Format('Illuminance: %f lx', [illuminance/100.0]));
 
   WriteLn('Press key to exit');
   ReadLn;

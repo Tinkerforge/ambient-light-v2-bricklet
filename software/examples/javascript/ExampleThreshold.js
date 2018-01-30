@@ -19,16 +19,16 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
         // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
         al.setDebouncePeriod(10000);
 
-        // Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+        // Configure threshold for illuminance "greater than 500 lx"
         al.setIlluminanceCallbackThreshold('>', 500*100, 0);
     }
 );
 
 // Register illuminance reached callback
 al.on(Tinkerforge.BrickletAmbientLightV2.CALLBACK_ILLUMINANCE_REACHED,
-    // Callback function for illuminance reached callback (parameter has unit Lux/100)
+    // Callback function for illuminance reached callback
     function (illuminance) {
-        console.log('Illuminance: ' + illuminance/100.0 + ' Lux');
+        console.log('Illuminance: ' + illuminance/100.0 + ' lx');
         console.log('Too bright, close the curtains!');
     }
 );

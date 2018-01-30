@@ -13,16 +13,16 @@ ipcon@Connect[host,port]
 (*Get threshold callbacks with a debounce time of 10 seconds (10000ms)*)
 al@SetDebouncePeriod[10000]
 
-(*Callback function for illuminance reached callback (parameter has unit Lux/100)*)
+(*Callback function for illuminance reached callback*)
 IlluminanceReachedCB[sender_,illuminance_]:=
  Module[{},
-  Print["Illuminance: "<>ToString[N[Quantity[illuminance,"Lux/100"]]]];
+  Print["Illuminance: "<>ToString[N[Quantity[illuminance,"lx/100"]]]];
   Print["Too bright, close the curtains!"]
  ]
 
 AddEventHandler[al@IlluminanceReachedCallback,IlluminanceReachedCB]
 
-(*Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)*)
+(*Configure threshold for illuminance "greater than 500 lx"*)
 option=Tinkerforge`BrickletAmbientLightV2`THRESHOLDUOPTIONUGREATER
 al@SetIlluminanceCallbackThreshold[option,500*100,0]
 

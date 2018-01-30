@@ -7,10 +7,10 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-	// Callback function for illuminance reached callback (parameter has unit Lux/100)
+	// Callback function for illuminance reached callback
 	static void IlluminanceReachedCB(BrickletAmbientLightV2 sender, long illuminance)
 	{
-		Console.WriteLine("Illuminance: " + illuminance/100.0 + " Lux");
+		Console.WriteLine("Illuminance: " + illuminance/100.0 + " lx");
 		Console.WriteLine("Too bright, close the curtains!");
 	}
 
@@ -28,7 +28,7 @@ class Example
 		// Register illuminance reached callback to function IlluminanceReachedCB
 		al.IlluminanceReachedCallback += IlluminanceReachedCB;
 
-		// Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+		// Configure threshold for illuminance "greater than 500 lx"
 		al.SetIlluminanceCallbackThreshold('>', 500*100, 0);
 
 		Console.WriteLine("Press enter to exit");

@@ -17,16 +17,16 @@ function octave_example_threshold()
     % Register illuminance reached callback to function cb_illuminance_reached
     al.addIlluminanceReachedCallback(@cb_illuminance_reached);
 
-    % Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+    % Configure threshold for illuminance "greater than 500 lx"
     al.setIlluminanceCallbackThreshold(">", 500*100, 0);
 
     input("Press key to exit\n", "s");
     ipcon.disconnect();
 end
 
-% Callback function for illuminance reached callback (parameter has unit Lux/100)
+% Callback function for illuminance reached callback
 function cb_illuminance_reached(e)
-    fprintf("Illuminance: %g Lux\n", java2int(e.illuminance)/100.0);
+    fprintf("Illuminance: %g lx\n", java2int(e.illuminance)/100.0);
     fprintf("Too bright, close the curtains!\n");
 end
 

@@ -15,9 +15,9 @@ if __name__ == "__main__":
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
 
-    # Get current illuminance (unit is Lux/100)
+    # Get current illuminance
     illuminance = al.get_illuminance()
-    print("Illuminance: " + str(illuminance/100.0) + " Lux")
+    print("Illuminance: " + str(illuminance/100.0) + " lx")
 
     raw_input("Press key to exit\n") # Use input() in Python 3
     ipcon.disconnect()

@@ -10,10 +10,10 @@ const HOST = 'localhost';
 const PORT = 4223;
 const UID = 'XYZ'; // Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-// Callback function for illuminance callback (parameter has unit Lux/100)
+// Callback function for illuminance callback
 function cb_illuminance($illuminance)
 {
-    echo "Illuminance: " . $illuminance/100.0 . " Lux\n";
+    echo "Illuminance: " . $illuminance/100.0 . " lx\n";
 }
 
 $ipcon = new IPConnection(); // Create IP connection

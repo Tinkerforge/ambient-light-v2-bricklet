@@ -6,10 +6,10 @@ Module ExampleThreshold
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-    ' Callback subroutine for illuminance reached callback (parameter has unit Lux/100)
+    ' Callback subroutine for illuminance reached callback
     Sub IlluminanceReachedCB(ByVal sender As BrickletAmbientLightV2, _
                              ByVal illuminance As Long)
-        Console.WriteLine("Illuminance: " + (illuminance/100.0).ToString() + " Lux")
+        Console.WriteLine("Illuminance: " + (illuminance/100.0).ToString() + " lx")
         Console.WriteLine("Too bright, close the curtains!")
     End Sub
 
@@ -26,7 +26,7 @@ Module ExampleThreshold
         ' Register illuminance reached callback to subroutine IlluminanceReachedCB
         AddHandler al.IlluminanceReachedCallback, AddressOf IlluminanceReachedCB
 
-        ' Configure threshold for illuminance "greater than 500 Lux" (unit is Lux/100)
+        ' Configure threshold for illuminance "greater than 500 lx"
         al.SetIlluminanceCallbackThreshold(">"C, 500*100, 0)
 
         Console.WriteLine("Press key to exit")

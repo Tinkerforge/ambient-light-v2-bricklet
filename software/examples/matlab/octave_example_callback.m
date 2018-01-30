@@ -23,9 +23,9 @@ function octave_example_callback()
     ipcon.disconnect();
 end
 
-% Callback function for illuminance callback (parameter has unit Lux/100)
+% Callback function for illuminance callback
 function cb_illuminance(e)
-    fprintf("Illuminance: %g Lux\n", java2int(e.illuminance)/100.0);
+    fprintf("Illuminance: %g lx\n", java2int(e.illuminance)/100.0);
 end
 
 function int = java2int(value)

@@ -3,5 +3,5 @@
 
 uid=XYZ # Change XYZ to the UID of your Ambient Light Bricklet 2.0
 
-# Get current illuminance (unit is Lux/100)
+# Get current illuminance
 tinkerforge call ambient-light-v2-bricklet $uid get-illuminance
