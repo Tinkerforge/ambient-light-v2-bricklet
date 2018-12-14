@@ -22,7 +22,7 @@ func main() {
 	al.SetDebouncePeriod(10000)
 
 	al.RegisterIlluminanceReachedCallback(func(illuminance uint32) {
-		fmt.Printf("Illuminance: %d lx\n", float64(illuminance)/100.0)
+		fmt.Printf("Illuminance: %f lx\n", float64(illuminance)/100.0)
 		fmt.Println("Too bright, close the curtains!")
 	})
 
